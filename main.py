@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 from doctr.io import DocumentFile
-from ocr_engine import structure_doctr_result, model, process_doc
+from ocr_engine import structure_doctr_result, get_model, process_doc
 import tempfile
 import shutil
 import os
@@ -27,7 +27,8 @@ async def extract_text(file: UploadFile = File(...)):
         except Exception as e:
             os.remove(tmp_path)
             return JSONResponse(status_code=400, content={"error": "Unsupported file format or corrupted file."})
-
+        
+        model = get_model()
         result = model(doc)
         structured_text = structure_doctr_result(result)
 
