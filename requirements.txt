@@ -1,0 +1,7 @@
+uvicorn
+fastapi
+python-doctr
+pydantic
+python-multipart
+torch
+torchvision
