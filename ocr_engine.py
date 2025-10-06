@@ -1,7 +1,8 @@
 from doctr.models import ocr_predictor
 from doctr.io import DocumentFile
 
-model = ocr_predictor(pretrained=True)
+# model = ocr_predictor(pretrained=True)
+model = ocr_predictor("fast_mini", pretrained=True)
 
 def process_doc(tmp_path, filename):
     if filename.lower().endswith(".pdf"):
